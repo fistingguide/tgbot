@@ -27,44 +27,39 @@ async function handleTelegramUpdate(update, env) {
   if (!message) return;
 
   const text = (message.text || "").trim();
-<<<<<<< HEAD
   if (!text) return;
+
   const command = normalizeCommand(text);
   const shouldReply = command === "/addgroup";
-=======
-  const command = normalizeCommand(text);
->>>>>>> 0c68705b8a72964fc7a8f3fd172e928b402a4889
-  console.log(JSON.stringify({
-    type: "incoming_message",
-    from_id: message?.from?.id ?? null,
-    username: message?.from?.username ?? null,
-    chat_id: message?.chat?.id ?? null,
-<<<<<<< HEAD
-    chat_type: message?.chat?.type ?? null,
-    text,
-    command,
-    should_reply: shouldReply,
-    update_id: update?.update_id ?? null,
-  }));
+
+  console.log(
+    JSON.stringify({
+      type: "incoming_message",
+      from_id: message?.from?.id ?? null,
+      username: message?.from?.username ?? null,
+      chat_id: message?.chat?.id ?? null,
+      chat_type: message?.chat?.type ?? null,
+      text,
+      command,
+      should_reply: shouldReply,
+      update_id: update?.update_id ?? null,
+    })
+  );
 
   if (!shouldReply) return;
-=======
-    text,
-    command,
-    update_id: update?.update_id ?? null,
-  }));
-
-  if (command !== "/addgroup") return;
->>>>>>> 0c68705b8a72964fc7a8f3fd172e928b402a4889
 
   const inlineKeyboard = buildRegionKeyboard(env);
-  await callTelegram("sendMessage", {
-    chat_id: message.chat.id,
-    text: "请选择区域进入对应群：",
-    reply_markup: {
-      inline_keyboard: inlineKeyboard,
+  await callTelegram(
+    "sendMessage",
+    {
+      chat_id: message.chat.id,
+      text: "\u8bf7\u9009\u62e9\u533a\u57df\u8fdb\u5165\u5bf9\u5e94\u7fa4\uff1a",
+      reply_markup: {
+        inline_keyboard: inlineKeyboard,
+      },
     },
-  }, env);
+    env
+  );
 }
 
 function normalizeCommand(text) {
@@ -76,7 +71,7 @@ function normalizeCommand(text) {
 
 function buildRegionKeyboard(env) {
   const buttons = REGION_KEYS.map((idx) => {
-    const name = env[`REGION_${idx}_NAME`] || `区域${idx}`;
+    const name = env[`REGION_${idx}_NAME`] || `Region ${idx}`;
     const url = env[`REGION_${idx}_URL`] || "https://t.me";
     return { text: name, url };
   });
@@ -103,7 +98,9 @@ async function callTelegram(method, payload, env) {
 
   if (!response.ok) {
     const bodyText = await response.text();
-    throw new Error(`Telegram API ${method} failed: ${response.status} ${bodyText}`);
+    throw new Error(
+      `Telegram API ${method} failed: ${response.status} ${bodyText}`
+    );
   }
 }
 
