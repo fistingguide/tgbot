@@ -27,7 +27,18 @@ async function handleTelegramUpdate(update, env) {
   if (!message) return;
 
   const text = (message.text || "").trim();
-  if (text !== "/addgroup") return;
+  const command = normalizeCommand(text);
+  console.log(JSON.stringify({
+    type: "incoming_message",
+    from_id: message?.from?.id ?? null,
+    username: message?.from?.username ?? null,
+    chat_id: message?.chat?.id ?? null,
+    text,
+    command,
+    update_id: update?.update_id ?? null,
+  }));
+
+  if (command !== "/addgroup") return;
 
   const inlineKeyboard = buildRegionKeyboard(env);
   await callTelegram("sendMessage", {
@@ -37,6 +48,13 @@ async function handleTelegramUpdate(update, env) {
       inline_keyboard: inlineKeyboard,
     },
   }, env);
+}
+
+function normalizeCommand(text) {
+  if (!text.startsWith("/")) return "";
+  const firstToken = text.split(/\s+/, 1)[0];
+  const atIndex = firstToken.indexOf("@");
+  return atIndex === -1 ? firstToken : firstToken.slice(0, atIndex);
 }
 
 function buildRegionKeyboard(env) {
