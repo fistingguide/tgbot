@@ -53,7 +53,7 @@ async function handleTelegramUpdate(update, env) {
     "sendMessage",
     {
       chat_id: message.chat.id,
-      text: "\u8bf7\u9009\u62e9\u533a\u57df\u8fdb\u5165\u5bf9\u5e94\u7fa4\uff1a",
+      text: "Where are you from",
       reply_markup: {
         inline_keyboard: inlineKeyboard,
       },
