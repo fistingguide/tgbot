@@ -1,0 +1,24 @@
+name = "tgbot-worker"
+main = "src/index.js"
+compatibility_date = "2026-04-15"
+
+[vars]
+# 可直接改成你的地区名称。群链接推荐用 https://t.me/xxxxxx
+REGION_1_NAME = "华北"
+REGION_2_NAME = "华东"
+REGION_3_NAME = "华南"
+REGION_4_NAME = "华中"
+REGION_5_NAME = "西南"
+REGION_6_NAME = "西北"
+REGION_7_NAME = "港澳台"
+REGION_8_NAME = "海外"
+
+# 先用占位，部署前改成真实群链接
+REGION_1_URL = "https://t.me/your_group_1"
+REGION_2_URL = "https://t.me/your_group_2"
+REGION_3_URL = "https://t.me/your_group_3"
+REGION_4_URL = "https://t.me/your_group_4"
+REGION_5_URL = "https://t.me/your_group_5"
+REGION_6_URL = "https://t.me/your_group_6"
+REGION_7_URL = "https://t.me/your_group_7"
+REGION_8_URL = "https://t.me/your_group_8"
