@@ -27,18 +27,22 @@ async function handleTelegramUpdate(update, env) {
   if (!message) return;
 
   const text = (message.text || "").trim();
+  if (!text) return;
   const command = normalizeCommand(text);
+  const shouldReply = command === "/addgroup";
   console.log(JSON.stringify({
     type: "incoming_message",
     from_id: message?.from?.id ?? null,
     username: message?.from?.username ?? null,
     chat_id: message?.chat?.id ?? null,
+    chat_type: message?.chat?.type ?? null,
     text,
     command,
+    should_reply: shouldReply,
     update_id: update?.update_id ?? null,
   }));
 
-  if (command !== "/addgroup") return;
+  if (!shouldReply) return;
 
   const inlineKeyboard = buildRegionKeyboard(env);
   await callTelegram("sendMessage", {

@@ -1,0 +1,3 @@
+curl -X POST "https://tgbot.fistingguide.workers.dev/telegram" `
+  -H "content-type: application/json" `
+  -d "{\"update_id\":1,\"message\":{\"chat\":{\"id\":123456},\"from\":{\"id\":1,\"username\":\"test\"},\"text\":\"/addgroup\"}}"
