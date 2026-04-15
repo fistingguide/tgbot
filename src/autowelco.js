@@ -6,7 +6,7 @@ export async function tryAutoWelcome(update, env, callTelegram) {
 
   const chatId = welcomeContext.chatId;
   const chatName = welcomeContext.chatName || "this group";
-  const text = `welcom to ${chatName}`;
+  const text = `welcome to ${chatName},our site is https://www.fisting.guide/`;
 
   await callTelegram(
     "sendMessage",
