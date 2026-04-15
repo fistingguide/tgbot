@@ -4,7 +4,7 @@ compatibility_date = "2026-04-14"
 
 [vars]
 # Update region labels and Telegram group links before deploy.
-REGION_1_NAME = "China Mainland"
+REGION_1_NAME = "Mainland China & HK/Macau"
 REGION_2_NAME = "Europe"
 REGION_3_NAME = "Japan"
 REGION_4_NAME = "Latin America"
