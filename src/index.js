@@ -1,3 +1,4 @@
+import { tryAutoWelcome } from "./autowelco.js";
 const REGION_KEYS = [1, 2, 3, 4, 5, 6, 7, 8];
 
 export default {
@@ -23,6 +24,8 @@ export default {
 };
 
 async function handleTelegramUpdate(update, env) {
+  await tryAutoWelcome(update, env, callTelegram);
+
   const message = update?.message;
   if (!message) return;
 
@@ -53,7 +56,7 @@ async function handleTelegramUpdate(update, env) {
     "sendMessage",
     {
       chat_id: message.chat.id,
-      text: "Where are you from",
+      text: "Please Select your Area",
       reply_markup: {
         inline_keyboard: inlineKeyboard,
       },
