@@ -7,7 +7,7 @@ export async function tryAutoWelcome(update, env, callTelegram) {
   const chatId = welcomeContext.chatId;
   const chatName = welcomeContext.chatName || "this group";
   const memberName = welcomeContext.memberName || "new member";
-  const text = `welcome ${memberName} to ${chatName},our site is https://www.fisting.guide/`;
+  const text = `welcome ${memberName} to ${chatName}`;
 
   await callTelegram(
     "sendMessage",
@@ -18,32 +18,38 @@ export async function tryAutoWelcome(update, env, callTelegram) {
         inline_keyboard: [
           [
             {
-              text: "View Community Introduction",
+              text: "📘 View Community Introduction",
               url: "https://x.com/FistingGuide/status/2043197242170130571?s=20",
             },
-          ],
-          [
             {
-              text: "View Ranking System",
+              text: "🏆 View Ranking System",
               url: "https://x.com/FistingGuide/status/2044727271274221961?s=20",
             },
           ],
           [
             {
-              text: "Edit Your Profile",
+              text: "✏️ Edit Your Profile",
               url: "https://fisting.guide/admin",
             },
-          ],
-          [
             {
-              text: "View Our Blog",
+              text: "📰 View Our Blog",
               url: "https://blog.fistingguide.workers.dev/",
             },
           ],
           [
             {
-              text: "View Member Map",
+              text: "🗺️ View Member Map",
               url: "https://fisting.guide/dashboard",
+            },
+            {
+              text: "🐦 View Our X",
+              url: "https://x.com/FistingGuide",
+            },
+          ],
+          [
+            {
+              text: "🌐 View Our Website",
+              url: "https://fisting.guide/",
             },
           ],
         ],
