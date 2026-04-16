@@ -14,6 +14,40 @@ export async function tryAutoWelcome(update, env, callTelegram) {
     {
       chat_id: chatId,
       text,
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: "View Community Introduction",
+              url: "https://x.com/FistingGuide/status/2043197242170130571?s=20",
+            },
+          ],
+          [
+            {
+              text: "View Ranking System",
+              url: "https://x.com/FistingGuide/status/2044727271274221961?s=20",
+            },
+          ],
+          [
+            {
+              text: "Edit Your Profile",
+              url: "https://fisting.guide/admin",
+            },
+          ],
+          [
+            {
+              text: "View Our Blog",
+              url: "https://blog.fistingguide.workers.dev/",
+            },
+          ],
+          [
+            {
+              text: "View Member Map",
+              url: "https://fisting.guide/dashboard",
+            },
+          ],
+        ],
+      },
     },
     env
   );
